@@ -4,35 +4,6 @@ import { setCategoryFilter, setSortOrder, setPriceRange, setData, setIsLoading }
 import { ProductCategory, IProduct } from '../../data';
 import { SortOrder } from '../components/SortChoice';
 
-const handleSetData = (
-    state: IProductsListState,
-    { payload }: PayloadAction<Record<number, IProduct>>
-) => {
-    state.products = payload;
-};
-
-const handleSetSortOrder = (state: IProductsListState, { payload }: PayloadAction<SortOrder>) => {
-    state.sortOrder = payload;
-};
-
-const handleSetCategoryFilter = (
-    state: IProductsListState,
-    { payload }: PayloadAction<ProductCategory>
-) => {
-    state.categoryFilter = payload;
-};
-
-const handleSetPriceRange = (
-    state: IProductsListState,
-    { payload }: PayloadAction<[number, number]>
-) => {
-    state.priceRange = payload;
-};
-
-const handleSetIsLoading = (state: IProductsListState, { payload }: PayloadAction<boolean>) => {
-    state.isLoading = payload;
-};
-
 export interface IProductsListState {
     sortOrder?: SortOrder;
     categoryFilter?: ProductCategory;
@@ -46,12 +17,23 @@ export const initialState: IProductsListState = {
     isLoading: false,
 };
 
-const productsListReducer = createReducer(initialState, {
-    [setCategoryFilter.type]: handleSetCategoryFilter,
-    [setSortOrder.type]: handleSetSortOrder,
-    [setPriceRange.type]: handleSetPriceRange,
-    [setData.type]: handleSetData,
-    [setIsLoading.type]: handleSetIsLoading,
-});
+const productsListReducer = createReducer(initialState, (builder) =>
+    builder
+        .addCase(setCategoryFilter, (state, { payload }) => {
+            state.categoryFilter = payload;
+        })
+        .addCase(setSortOrder, (state, { payload }) => {
+            state.sortOrder = payload;
+        })
+        .addCase(setPriceRange, (state, { payload }) => {
+            state.priceRange = payload;
+        })
+        .addCase(setData, (state, { payload }) => {
+            state.products = payload;
+        })
+        .addCase(setIsLoading, (state, { payload }) => {
+            state.isLoading = payload;
+        })
+);
 
 export default productsListReducer;
