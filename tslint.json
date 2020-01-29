@@ -1,0 +1,32 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-react"],
+  "jsRules": {
+    "max-line-length": {
+      "options": [100]
+    }
+  },
+  "rules": {
+    "max-line-length": {
+      "options": [100]
+    },
+    "member-ordering": false,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "react-hooks/exhaustive-deps": false,
+    "object-literal-key-quotes": [true, "as-needed"],
+    "quotemark": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": false,
+    "jsx-no-multiline-js": false,
+    "arrow-parens": false,
+    "trailing-comma": false,
+    "jsx-boolean-value": false,
+    "jsx-alignment": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["src/serviceWorker.ts", "node_modules"],
+    "format": "stylish"
+  }
+}
