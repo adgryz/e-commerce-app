@@ -33,7 +33,7 @@ const TopBar: React.FC = () => {
                 visible={isCartVisible}
                 onVisibleChange={setIsCartVisible}>
                 <Badge count={productsCount}>
-                    <Icon style={{ fontSize: 32, cursor: 'pointer' }} type="shopping-cart" />
+                    <Logo type="shopping-cart" />
                 </Badge>
             </Popover>
         </Container>
@@ -41,7 +41,6 @@ const TopBar: React.FC = () => {
 };
 
 const Container = styled.div`
-    width: '100%';
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -52,6 +51,7 @@ const Container = styled.div`
 const Logo = styled(Icon)`
     font-size: 32px;
     margin-right: 20px;
+    cursor: pointer;
 `;
 
 const Title = styled.span`

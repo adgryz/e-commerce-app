@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { selectTotalCartPrice } from '../store/selectors';
-import { formatPrice } from '../../../services/format';
+import { formatPrice } from '../../../utils/format';
 
 const TotalPrice: React.FC = () => {
     const { basePrice, totalPrice, isDiscounted } = useSelector(selectTotalCartPrice);

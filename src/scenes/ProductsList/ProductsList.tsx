@@ -7,10 +7,11 @@ import SingleProduct from './components/SingleProduct';
 import SortChoice from './components/SortChoice';
 import CategoryFilter from './components/CategoryFilter';
 import PriceFilter from './components/PriceFilter';
-import { selectFilteredAndSortedProducts } from './store/selectors';
+import { selectFilteredAndSortedProducts, selectIsLoading } from './store/selectors';
 import { setCategoryFilter } from './store/actions';
-import { routeToCategory } from './services/routing';
+import { routeToCategory } from './utils/routing';
 import { CategoryRoute } from '../../routes';
+import { Spin } from 'antd';
 
 const ProductsList: React.FC = () => {
     const { category: categoryRoute } = useParams();
@@ -22,6 +23,8 @@ const ProductsList: React.FC = () => {
     }, [categoryRoute, dispatch]);
 
     const filteredData = useSelector(selectFilteredAndSortedProducts);
+    const isLoading = useSelector(selectIsLoading);
+
     const productsList = filteredData.map((product) => (
         <SingleProduct key={product.id} product={product} />
     ));
@@ -33,10 +36,14 @@ const ProductsList: React.FC = () => {
                 <CategoryFilter />
                 <PriceFilter />
             </FiltersContainer>
-            <Container>{productsList}</Container>
+            <Container>{isLoading ? <StyledSpinner size="large" /> : productsList}</Container>
         </div>
     );
 };
+
+const StyledSpinner = styled(Spin)`
+    margin: 50px;
+`;
 
 const FiltersContainer = styled.div`
     @media (max-width: 768px) {

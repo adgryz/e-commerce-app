@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { IProduct } from '../../data';
 import { removeProductFromCart, changeProductAmount } from '../store/actions';
-import { formatPrice } from '../../../services/format';
+import { formatPrice } from '../../../utils/format';
 
 const { Option } = Select;
 

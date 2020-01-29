@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { IProductOrder } from './ProductThumbnail';
-import { formatPrice } from '../../../services/format';
+import { formatPrice } from '../../../utils/format';
 
 interface IReceiptEntryProps {
     product: IProductOrder;

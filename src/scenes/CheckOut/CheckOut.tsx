@@ -9,24 +9,24 @@ import { confirmCheckOut } from './store/actions';
 
 const CheckOut: React.FC = () => {
     const cartProducts = useSelector(selectFullCartProductsList);
-    const productsList = cartProducts.map((product) => <ProductThumbnail product={product} />);
+    const productsList = cartProducts.map((product) => (
+        <ProductThumbnail key={product.id} product={product} />
+    ));
 
     const dispatch = useDispatch();
     const handleCheckout = () => dispatch(confirmCheckOut());
 
-    const cart =
-        cartProducts.length === 0 ? (
-            <div>Your cart is empty</div>
-        ) : (
-            <div>
-                <div>{productsList}</div>
-                <TotalPrice />
-                <Button type="primary" size="large" onClick={handleCheckout}>
-                    Continue to checkout
-                </Button>
-            </div>
-        );
-    return cart;
+    return cartProducts.length === 0 ? (
+        <div>Your cart is empty</div>
+    ) : (
+        <div>
+            <div>{productsList}</div>
+            <TotalPrice />
+            <Button type="primary" size="large" onClick={handleCheckout}>
+                Continue to checkout
+            </Button>
+        </div>
+    );
 };
 
 export default CheckOut;

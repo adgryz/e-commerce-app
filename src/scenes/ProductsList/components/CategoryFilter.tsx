@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ProductCategory } from '../../data';
 import { setCategoryFilter } from '../store/actions';
-import { categoryToRoute } from '../services/routing';
+import { categoryToRoute } from '../utils/routing';
 import { selectCategoryFilter } from '../store/selectors';
 
 const { Option } = Select;

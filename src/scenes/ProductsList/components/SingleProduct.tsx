@@ -5,7 +5,8 @@ import styled from 'styled-components';
 
 import { IProduct } from '../../data';
 import { addProductToCart } from '../../CheckOut/store/actions';
-import { formatPrice } from '../../../services/format';
+import { formatPrice } from '../../../utils/format';
+import BoldText from '../../../components/BoldText';
 
 interface ISingleProductProps {
     product: IProduct;
@@ -22,7 +23,9 @@ const SingleProduct: React.FC<ISingleProductProps> = ({ product }) => {
             <img src={image} alt={name} width={200} height={260} />
             <InfoRow>
                 <div>{name}</div>
-                <BoldText>{formatPrice(price)}</BoldText>
+                <div>
+                    <BoldText>{formatPrice(price)}</BoldText>
+                </div>
             </InfoRow>
             <ButtonRow>
                 <Button onClick={handleAddProduct}>
@@ -48,10 +51,6 @@ const InfoRow = styled.div`
 const ButtonRow = styled.div`
     display: flex;
     justify-content: center;
-`;
-
-const BoldText = styled.div`
-    font-weight: bold;
 `;
 
 export default SingleProduct;

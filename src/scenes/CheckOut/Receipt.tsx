@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 import ReceiptEntry from './components/ReceiptEntry';
 import { selectTotalReceiptPrice, selectFullReceiptProductsList } from './store/selectors';
-import { getInvoiceNumber } from './services/invoice';
-import { formatPrice } from '../../services/format';
+import { getInvoiceNumber } from './utils/invoice';
+import { formatPrice } from '../../utils/format';
 import { finishPurchase } from './store/actions';
+import BoldText from '../../components/BoldText';
 
 interface IReceiptProps {
     hidePopover: () => void;
@@ -41,10 +42,6 @@ const Receipt: React.FC<IReceiptProps> = ({ hidePopover }) => {
         </div>
     );
 };
-
-const BoldText = styled.span`
-    font-weight: bold;
-`;
 
 const PriceContainer = styled.div`
     margin-bottom: 10px;

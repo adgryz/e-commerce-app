@@ -6,6 +6,7 @@ import { IProduct } from '../../data';
 export const selectSortOrder = (state: IRootState) => state.productsList.sortOrder;
 export const selectCategoryFilter = (state: IRootState) => state.productsList.categoryFilter;
 export const selectPriceRange = (state: IRootState) => state.productsList.priceRange;
+export const selectIsLoading = (state: IRootState) => state.productsList.isLoading;
 
 export const selectAllProducts = (state: IRootState) => state.productsList.products;
 export const selectAllProductsList = createSelector([selectAllProducts], (products) =>
